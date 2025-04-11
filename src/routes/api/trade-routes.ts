@@ -6,18 +6,19 @@ import { AlpacaBar } from '../../types.js'
 import 'dotenv/config';
 
 const client = new Alpaca({
-    keyId: process.env.ALPACA_KEY || 'YOUR_API_KEY',
-    secretKey: process.env.ALPACA_SECRET || 'YOUR_SECRET_KEY',
+    keyId: process.env.ALPACA_KEY,
+    secretKey: process.env.ALPACA_SECRET,
     paper: true,
   });
   
   // Health check endpoint
-  router.get('/', (req: Request, res: Response) => {
+  router.get('/', (req: Request, res: Response) => {   
     res.json({ status: 'Alive', message: 'Trading bot is running!' });
   });
   
   // Endpoint to manually trigger a strategy
   router.post('/trigger-strategy', async (req: Request, res: Response) => {
+    console.log("hit")
     try {
       const { symbol } = req.body;
       await checkSPY(symbol || 'SPY'); // Reusable strategy function
@@ -62,8 +63,9 @@ const client = new Alpaca({
   
   // Strategy logic (reusable)
   async function checkSPY(symbol: string): Promise<void> {
-    
-    const barArray = await getBarsArray(symbol);    
+    console.log("hello?")
+    const barArray = await getBarsArray(symbol);  
+    console.log(barArray);  
     const latestBar: any = barArray[0];
 
     if(!latestBar){

@@ -2,12 +2,13 @@
   "name": "tradebug",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.ts",
   "scripts": {    
     "build": "npx tsc",
-    "start": "npm run build && node dist/server.js --ignore client",
-    "dev": "npx nodemon",
+    "start": "ts-node src/server.ts",
+    "start:dev": "nodemon src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
+    
   },
   "keywords": [],
   "author": "",
