@@ -26,3 +26,12 @@ export interface Bar {
     TradeCount?: number;  // Number of trades (optional)
     VWAP?: number;        // Volume-weighted avg price (optional)
   }
+
+
+  export interface TradeLog {
+    symbol: string;
+    entry: number;
+    exit: number;
+    pnl: number;
+    date: Date;
+  }
